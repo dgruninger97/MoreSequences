@@ -17,8 +17,8 @@ def main():
     """ Calls the   TEST   functions in this module. """
     #run_test_generate_points_on_circle()
     #run_test_draw_points_on_circle()
-    run_test_pizza()
-    #run_test_polygon()
+    #run_test_pizza()
+    run_test_polygon()
     #run_test_fancy_polygon()
 
 
@@ -349,7 +349,7 @@ def pizza(window, circle, number_of_slices, color, thickness):
 def run_test_polygon():
     """ Tests the   polygon   function. """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement this TEST function.
+    # DONE: 7. Implement this TEST function.
     #   It TESTS the   polygon   function defined below.
     #   Include at least ** 1 ** ADDITIONAL test (that YOU write).
     #
@@ -381,9 +381,26 @@ def run_test_polygon():
     # ------------------------------------------------------------------
     # Test 3:  (YOU write THIS test)
     # ------------------------------------------------------------------
+    # Test 3
+    title = 'POLYGON tests 3:  5 segments' + \
+        ' with thin orange lines;  6 with medium red lines.'
+    window = rg.RoseWindow(550, 400, title)
 
+    circle = rg.Circle(rg.Point(100, 100), 80)
+    circle.outline_thickness = 3
+    polygon(window, circle, 5, 'orange', 3)
+    window.close_on_mouse_click()
 
 def polygon(window, circle, number_of_segments, color, thickness):
+    circle.attach_to(window)
+    pointsoncircle = generate_points_on_circle(circle, number_of_segments)
+    pointsoncircle = pointsoncircle + [pointsoncircle[0]]
+    for k in range(number_of_segments):
+        line = rg.Line(pointsoncircle[k], pointsoncircle[k + 1])
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
     """
     What comes in:
       -- an rg.RoseWindow
