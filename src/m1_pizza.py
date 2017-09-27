@@ -16,8 +16,8 @@ import math
 def main():
     """ Calls the   TEST   functions in this module. """
     #run_test_generate_points_on_circle()
-    run_test_draw_points_on_circle()
-    #run_test_pizza()
+    #run_test_draw_points_on_circle()
+    run_test_pizza()
     #run_test_polygon()
     #run_test_fancy_polygon()
 
@@ -247,7 +247,7 @@ def draw_points_on_circle(window, circle, number_of_points, color):
 def run_test_pizza():
     """ Tests the   pizza   function. """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement this TEST function.
+    # DONE: 5. Implement this TEST function.
     #   It TESTS the   pizza   function defined below.
     #   Include at least ** 1 ** ADDITIONAL test (that YOU write).
     #
@@ -290,9 +290,23 @@ def run_test_pizza():
     #     -- a large number of thin black lines
     #     -- on a yellow-filled circle.
     # ------------------------------------------------------------------
-
+    # Test 4:
+    title = 'PIZZA test 4:  8 slices, thin (thickness=2) red lines.'
+    window = rg.RoseWindow(400, 400, title)
+    circle = rg.Circle(rg.Point(200, 200), 225)
+    circle.outline_thickness = 3
+    pizza(window, circle, 8, 'red', 2)
+    window.close_on_mouse_click()
 
 def pizza(window, circle, number_of_slices, color, thickness):
+    circle.attach_to(window)
+    pointsoncircle = generate_points_on_circle(circle, number_of_slices)
+    for k in range(number_of_slices):
+        line = rg.Line(pointsoncircle[k], circle.center)
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
     """
     What comes in:
       -- an rg.RoseWindow
@@ -322,7 +336,7 @@ def pizza(window, circle, number_of_slices, color, thickness):
       :type thickness:        int
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
