@@ -133,6 +133,11 @@ def run_test_count_last_n_odds():
 
 
 def count_last_n_odds(integers, n):
+    total = 0
+    for k in range(len(integers) - 1, len(integers) - n - 1, -1):
+        if integers[k] % 2 == 1:
+            total = total + 1
+    return total
     """
     What comes in:
       -- a sequence of integers
@@ -153,7 +158,7 @@ def count_last_n_odds(integers, n):
       :type n:        int
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
