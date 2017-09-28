@@ -188,14 +188,7 @@ def run_test_draw_points_on_circle():
 
 
 def draw_points_on_circle(window, circle, number_of_points, color):
-    circle.attach_to(window)
-    genpoints = generate_points_on_circle(circle, number_of_points)
-    for k in range(number_of_points):
-        newcircle = rg.Circle(genpoints[k], 10)
-        newcircle.fill_color = color
-        newcircle.attach_to(window)
-        genpoints[k].attach_to(window)
-    window.render()
+
     """
     What comes in:
       -- an rg.RoseWindow
@@ -241,7 +234,14 @@ def draw_points_on_circle(window, circle, number_of_points, color):
     #
     # Your professor may do this exercise with you as "live coding".
     # ------------------------------------------------------------------
-
+    circle.attach_to(window)
+    genpoints = generate_points_on_circle(circle, number_of_points)
+    for k in range(number_of_points):
+        newcircle = rg.Circle(genpoints[k], 10)
+        newcircle.fill_color = color
+        newcircle.attach_to(window)
+        genpoints[k].attach_to(window)
+    window.render()
 
 
 def run_test_pizza():
@@ -344,7 +344,14 @@ def pizza(window, circle, number_of_slices, color, thickness):
     #    (defined above) to generate the relevant points,
     #    and then draw lines that are based in part on those points.
     # ------------------------------------------------------------------
-
+    circle.attach_to(window)
+    pointsoncircle = generate_points_on_circle(circle, number_of_slices)
+    for k in range(number_of_slices):
+        line = rg.Line(pointsoncircle[k], circle.center)
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
 
 def run_test_polygon():
     """ Tests the   polygon   function. """
@@ -392,15 +399,7 @@ def run_test_polygon():
     window.close_on_mouse_click()
 
 def polygon(window, circle, number_of_segments, color, thickness):
-    circle.attach_to(window)
-    pointsoncircle = generate_points_on_circle(circle, number_of_segments)
-    pointsoncircle = pointsoncircle + [pointsoncircle[0]]
-    for k in range(number_of_segments):
-        line = rg.Line(pointsoncircle[k], pointsoncircle[k + 1])
-        line.color = color
-        line.thickness = thickness
-        line.attach_to(window)
-    window.render()
+
     """
     What comes in:
       -- an rg.RoseWindow
@@ -439,7 +438,15 @@ def polygon(window, circle, number_of_segments, color, thickness):
     #    (defined above) to generate the relevant points,
     #    and then draw lines that are based in part on those points.
     # ------------------------------------------------------------------
-
+    circle.attach_to(window)
+    pointsoncircle = generate_points_on_circle(circle, number_of_segments)
+    pointsoncircle = pointsoncircle + [pointsoncircle[0]]
+    for k in range(number_of_segments):
+        line = rg.Line(pointsoncircle[k], pointsoncircle[k + 1])
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
 
 def run_test_fancy_polygon():
     """ Tests the   fancy_polygon   function. """
@@ -502,15 +509,7 @@ def run_test_fancy_polygon():
 
 def fancy_polygon(window, circle, number_of_lines,
                   hops_to_next_point, color, thickness):
-    circle.attach_to(window)
-    linepoints = generate_points_on_circle(circle, number_of_lines)
-    for k in range(number_of_lines):
-        line = rg.Line((linepoints[k]), (linepoints[k - hops_to_next_point]))
-        line.color = color
-        line.thickness = thickness
-        line.arrow = 'last'
-        line.attach_to(window)
-    window.render()
+
     """
     What comes in:
       -- an rg.RoseWindow
@@ -580,7 +579,15 @@ def fancy_polygon(window, circle, number_of_lines,
     #       appropriately.  ASK YOUR INSTRUCTOR FOR AN EXAMPLE.
     ####################################################################
     # ------------------------------------------------------------------
-
+    circle.attach_to(window)
+    linepoints = generate_points_on_circle(circle, number_of_lines)
+    for k in range(number_of_lines):
+        line = rg.Line((linepoints[k]), (linepoints[k - hops_to_next_point]))
+        line.color = color
+        line.thickness = thickness
+        line.arrow = 'last'
+        line.attach_to(window)
+    window.render()
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
