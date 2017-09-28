@@ -369,18 +369,7 @@ def run_test_rectangles_from_circles():
 
 
 def rectangles_from_circles(circles):
-    rectangles = []
-    for k in range(len(circles)):
-        c = circles[k].center
-        x1 = c.x + circles[k].radius
-        y1 = c.y + circles[k].radius
-        corner1 = rg.Point(x1, y1)
-        x2 = c.x - circles[k].radius
-        y2 = c.y - circles[k].radius
-        corner2 = rg.Point(x2, y2)
-        rect = rg.Rectangle(corner1, corner2)
-        rectangles = rectangles + [rect]
-    return rectangles
+
     """
     See   rectangles_from_circles.pdf   in this project for pictures
     that may help you better understand the following specification:
@@ -409,7 +398,18 @@ def rectangles_from_circles(circles):
     ####################################################################
     # ------------------------------------------------------------------
 
-
+    rectangles = []
+    for k in range(len(circles)):
+        c = circles[k].center
+        x1 = c.x + circles[k].radius
+        y1 = c.y + circles[k].radius
+        corner1 = rg.Point(x1, y1)
+        x2 = c.x - circles[k].radius
+        y2 = c.y - circles[k].radius
+        corner2 = rg.Point(x2, y2)
+        rect = rg.Rectangle(corner1, corner2)
+        rectangles = rectangles + [rect]
+    return rectangles
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
