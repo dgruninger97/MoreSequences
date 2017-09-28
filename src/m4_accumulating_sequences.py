@@ -100,9 +100,6 @@ def run_test_make_simple_string():
     print('Actual:  ', actual)
 
 def make_simple_string(m, n):
-    sequence = ''
-    for k in range(m, n + 1):
-        sequence = sequence + str(k) + ''
     """
     What comes in:
       -- a positive integer m
@@ -123,10 +120,13 @@ def make_simple_string(m, n):
       :type n: int
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
-
+    sequence = ''
+    for k in range(m, n + 1):
+        sequence = sequence + str(k) + '-'
+    return sequence
 
 def run_test_make_less_simple_string():
     """ Tests the   make_less_simple_string    function. """
