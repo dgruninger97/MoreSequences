@@ -156,14 +156,7 @@ def run_test_make_less_simple_string():
 
 
 def make_less_simple_string(m, n):
-    sequence = ''
-    for k in range(m, n + 1):
-        if k < n:
-            sequence = sequence + str(k) + '-'
-        if k == n:
-            sequence = sequence + str(k) + ''
 
-    return sequence
 
     """
     What comes in:
@@ -190,7 +183,14 @@ def make_less_simple_string(m, n):
     # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -----------------------------------------------------------------
+    sequence = ''
+    for k in range(m, n + 1):
+        if k < n:
+            sequence = sequence + str(k) + '-'
+        if k == n:
+            sequence = sequence + str(k) + ''
 
+    return sequence
 
 def run_test_draw_shapes():
     """ Tests the   draw_shapes    function. """
@@ -247,6 +247,7 @@ def run_test_draw_shapes():
 
 
 def draw_shapes(shapes, window):
+
     """
     What comes in:
       -- a sequence of rg.Shape objects
@@ -270,7 +271,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 8. Implement and test this function.
+    # DONE: 8. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -281,7 +282,9 @@ def draw_shapes(shapes, window):
     # FWIW: The word for ideas like this is "polymorphism".
     ####################################################################
     # ------------------------------------------------------------------
-
+    for k in range(len(shapes)):
+        shapes[k].attach_to(window)
+    window.render(.3)
 
 def run_test_rectangles_from_circles():
     """ Tests the   rectangles_from_circles    function. """
@@ -366,6 +369,18 @@ def run_test_rectangles_from_circles():
 
 
 def rectangles_from_circles(circles):
+    rectangles = []
+    for k in range(len(circles)):
+        c = circles[k].center
+        x1 = c.x + circles[k].radius
+        y1 = c.y + circles[k].radius
+        corner1 = rg.Point(x1, y1)
+        x2 = c.x - circles[k].radius
+        y2 = c.y - circles[k].radius
+        corner2 = rg.Point(x2, y2)
+        rect = rg.Rectangle(corner1, corner2)
+        rectangles = rectangles + [rect]
+    return rectangles
     """
     See   rectangles_from_circles.pdf   in this project for pictures
     that may help you better understand the following specification:
@@ -382,7 +397,7 @@ def rectangles_from_circles(circles):
       :type circles:  list[rg.Circle]    or tuple(rg.Circle)
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
